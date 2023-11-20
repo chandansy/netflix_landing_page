@@ -30,9 +30,9 @@
             <span>Watch anywhere. Cancel anytime.</span>
             <span>Ready to watch? Enter your email to create or restart your membership.</span>
 
-            <div>
+            <div class="submit-btn">
                 <input type="text" class="text" placeholder="Email adress">
-                <button class="btn btn-red">Get Started &gt;</button>
+                <button class="btn btn-red">Get Started <img src="https://unpkg.com/@tabler/icons@2.36.0/icons/chevron-right.svg" alt=""></button>
             </div>
         </div>
         <div class="seperation"></div>
@@ -193,7 +193,7 @@ Kids profiles come with PIN-protected parental controls that let you restrict th
                 this.classList.toggle('active');
     
                 const panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
+                if (this.nextElementSibling && panel.style.maxHeight) {
                     // Panel is open, close it
                     panel.style.maxHeight = null;
                 } else {
@@ -201,12 +201,16 @@ Kids profiles come with PIN-protected parental controls that let you restrict th
                     accordions.forEach((otherAccordion) => {
                         if (otherAccordion !== accordion) {
                             otherAccordion.classList.remove('active');
+                            if (otherAccordion.nextElementSibling !==null){
                             otherAccordion.nextElementSibling.style.maxHeight = null;
+                        }
                         }
                     });
     
                     // Open the clicked panel
+                    if (panel){
                     panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
                 }
             });
         });
